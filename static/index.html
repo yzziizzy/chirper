@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <title></title>
+    <meta content="">
+
+    <link rel="stylesheet" type="text/css" href="./main.css" />
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    
+	<script type="text/javascript" src="./templating.js"></script>
+	<script type="text/javascript" src="./main.js"></script>
+	<script type="text/javascript">
+		var compData;
+		$(function() {
+			
+			
+			$(document).on('click', '[action="new-chirp"]', function(e) {
+				
+				var d = grabData($('.new-chirp'));
+				
+				$.getJSON('/newChirp', d, function(data, status) {
+					$('.chirps-container').prepend(data);
+				}) 
+				
+			});
+			
+			
+			$(document).on('click', '[action="new-user"]', function(e) {
+				
+				var d = grabData($('.new-user'));
+				console.log(d);
+				$.getJSON('/newUser', d, function(data, status) {
+					
+					console.log(data);
+				});
+				
+			});
+
+		});
+    </script>
+  </head>
+  <body>
+	<div class="prototypes" style="display:none;">
+		<proto name="chirp">
+			<div class="chirp">
+				<div class="author"></div>
+				<div class="content">
+					<span class="tags"></span>
+					<span class="message"></span>
+				</div>
+			</div>
+		</proto>
+
+	</div>
+	
+	<div class="body-wrapper">
+		
+		<div class="new-chirp">
+			<textarea class="message" cname="message"></textarea>
+			
+			<button action="new-chirp">Send</button>
+		</div>
+		
+		<div class="new-user">
+			<input class="edit" type="edit" cname="email" />
+			<input class="edit" type="edit" cname="display_name" />
+			<input class="edit" type="edit" cname="pwd1" />
+			<input class="edit" type="edit" cname="pwd2" />
+			
+			<button action="new-user">New User</button>
+		</div>
+		
+		
+		<div class="chirps-container"></div>
+		
+		
+		
+	</div>
+  </body>
+</html>

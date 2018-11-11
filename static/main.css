@@ -1,0 +1,29 @@
+
+
+
+.new-chirp {
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid black; 
+}
+
+.new-chirp .message {
+	
+}
+
+.new-user {
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid black; 
+}
+
+.new-user .edit {
+	display: block;
+	margin: 10px;
+}
+
+
+
+
+
+
