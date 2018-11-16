@@ -14,7 +14,14 @@ var Path = require('path');
 
 var config = require('./config');
 
+if(argv.pwd) {
+	config.db.password = argv.pwd;
+}
+
+
+
 config.db.multipleStatements = true;
+delete config.db.database;
 var conn = mysql.createConnection(config.db);
 
 
